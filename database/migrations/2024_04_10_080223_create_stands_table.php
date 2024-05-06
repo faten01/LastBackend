@@ -17,6 +17,7 @@ return new class extends Migration
             $table->double('superficie');
             $table->double('longeur');
             $table->double('largeur');
+            $table->double('prix');
             $table->string('numero');
             $table->enum('etat', ['disponible', 'reservee', 'non disponible']);
             $table->timestamps();

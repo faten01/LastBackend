@@ -46,6 +46,8 @@ Route::get('/users/{id}',[UserController::class,'show']);
 Route::get('/users',[UserController::class,'index']);
 Route::put('/users/{identifier}', [UserController::class,'update']);
 Route::delete('/users/{identifier}', [UserController::class,'destroy']);
+Route::get('/nom',[UserController::class,'return']);
+
 
 
 Route::post('/types',[TypeController::class,'store']);
@@ -67,6 +69,10 @@ Route::get('/reservations/{identifier}',[ReservationController::class,'show']);
 Route::get('/reservations',[ReservationController::class,'index']);
 Route::put('/reservations/{identifier}', [ReservationController::class,'update']);
 Route::delete('/reservations/{identifier}', [ReservationController::class,'destroy']);
+Route::post('/reservations/load',[ReservationController::class,'load']);
+Route::patch('/reservations/{reservation}', [ReservationController::class, 'updateAccept']);
+
+
 
 
 Route::post('/ratings',[RatingController::class,'store']);

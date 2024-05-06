@@ -90,4 +90,33 @@ class ReservationController extends Controller
         
             return response()->json("deleted successfuly", 204);
             }
+
+
+
+            public function load(Request $request)
+    {
+        $reservation = new Reservation();
+        $reservation->user_id = $request->user_id;
+        $reservation->event_id = $request->event_id;
+        $reservation->stand_id = $request->stand_id;
+        $reservation->save();
+
+        return response()->json($reservation);
+    }
+
+    public function updateAccept(Request $request, $id)
+    {
+        $reservation = Reservation::find($id);
+        $reservation->status = $request->status;
+        $reservation->save();
+
+        return response()->json($reservation);
+    }
+
+
+    public function state()
+{
+    $pendingReservations = Reservation::where('status', 'pending')->get();
+    return response()->json($pendingReservations);
+}
 }

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+
 
 class UserController extends Controller
 {
@@ -11,8 +13,19 @@ class UserController extends Controller
     public function index()
     {
         return User::all();
-    }
+        
 
+
+    }
+    public function return(Request $request)
+    {
+       
+    
+       
+        $noms = User::pluck('nom'); // Assuming 'nom' is the column name for names
+        return response()->json($noms);
+    
+    }
 
     public function store(Request $request)
     {
